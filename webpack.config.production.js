@@ -1,38 +1,39 @@
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 /* eslint-disable */
 
-var path = require("path");
-var webpack = require("webpack");
+var path = require('path')
+var webpack = require('webpack')
 
 module.exports = {
-  mode: "production",
-  entry: ["@babel/polyfill", "./index"],
-
+  mode: 'production',
+  entry: ['./index'],
   output: {
-    path: path.join(__dirname, "dist"),
-    filename: "bundle.js",
-    publicPath: "/dist/"
+    path: path.join(__dirname, 'dist'),
+    filename: 'bundle.[hash].js',
+    publicPath: '/'
   },
-
   plugins: [
     new webpack.DefinePlugin({
-      "process.env": {
-        NODE_ENV: JSON.stringify("production")
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
       }
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Training Day - Amazon DynamoDB',
+      template: 'index.html'
     })
   ],
-
   module: {
     rules: [
       {
         test: /\.md$/,
         use: [
           {
-            loader: "html-loader"
+            loader: 'html-loader'
           },
           {
-            loader: "markdown-loader",
-
+            loader: 'markdown-loader',
             options: {
               gfm: false
             }
@@ -44,7 +45,7 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: "babel-loader"
+            loader: 'babel-loader'
           }
         ]
       },
@@ -52,10 +53,10 @@ module.exports = {
         test: /\.css$/,
         use: [
           {
-            loader: "style-loader"
+            loader: 'style-loader'
           },
           {
-            loader: "css-loader"
+            loader: 'css-loader'
           }
         ]
       },
@@ -63,8 +64,7 @@ module.exports = {
         test: /\.(png|jpg|gif)$/,
         use: [
           {
-            loader: "url-loader",
-
+            loader: 'url-loader',
             options: {
               limit: 8192
             }
@@ -75,21 +75,21 @@ module.exports = {
         test: /\.svg$/,
         use: [
           {
-            loader: "url-loader",
-
+            loader: 'url-loader',
             options: {
               limit: 10000,
-              mimetype: "image/svg+xml"
+              mimetype: 'image/svg+xml'
             }
           }
         ]
       }
     ]
   },
-
   optimization: {
+    runtimeChunk: 'single',
+    moduleIds: 'hashed',
+    chunkIds: 'named',
     minimize: true,
-
-    minimizer: [new UglifyJsPlugin()]
+    minimizer: [new TerserPlugin()]
   }
-};
+}
