@@ -1,6 +1,6 @@
 # Training Day - Amazon DynamodDB
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/427e436a-d5c7-431b-bba6-2a2bcd71c8f3/deploy-status)](https://app.netlify.com/sites/cjv-dynamodb/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/35a7f336-e522-49f6-b77e-56a0c3ab34aa/deploy-status)](https://app.netlify.com/sites/cjv-dynamodb/deploys)
 
 ## Contents
 
