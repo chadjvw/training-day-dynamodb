@@ -19,7 +19,6 @@ import {
   Link
 } from 'spectacle'
 import createTheme from 'spectacle/lib/themes/default'
-import preloader from 'spectacle/lib/utils/preloader'
 import ddb from '../assets/Amazon-DynamoDB.svg'
 import table1 from '../assets/table-breakdown1.png'
 import table2 from '../assets/table-breakdown2.png'
@@ -34,9 +33,6 @@ import indexOverload from '../assets/index-overloading.png'
 import indexOverload1 from '../assets/index-overload1.png'
 import indexOverload2 from '../assets/index-overload2.png'
 import perf from '../assets/perf-at-scale.png'
-
-
-preloader(images)
 
 // Require CSS
 require('normalize.css')
@@ -325,7 +321,7 @@ export default class Presentation extends React.Component {
           <Heading size={3} textColor="primary">
             Index Overloading
           </Heading>
-          <Image margin="20px auto 0" fill src={indexOverload2} />
+          <Image margin="20px auto 0" fill src={indexOverload} />
           <List>
             <ListItem>Generic key names enable multiple access patterns</ListItem>
           </List>
