@@ -61,7 +61,7 @@ export default class Presentation extends React.Component {
             Amazon DynamoDB
           </Heading>
           <Text margin="10px 0 0" textColor="tertiary" fit bold>
-            Desining a distributed database for efficency and scale
+            Designing a distributed database for efficiency and scale
           </Text>
           <Image margin="10px auto 0" src={ddb} width="30%" className="center" />
         </Slide>
@@ -89,7 +89,7 @@ export default class Presentation extends React.Component {
             <Text textColor="primary">Built for specific data models</Text>
           </Appear>
           <Appear fid="3">
-            <Text textColor="primary">Flexiable schemas</Text>
+            <Text textColor="primary">Flexible schemas</Text>
           </Appear>
           <Appear fid="4">
             <Text textColor="primary">Performance at scale</Text>
@@ -135,9 +135,9 @@ export default class Presentation extends React.Component {
             </TableBody>
           </Table>
           <Notes>
-            Rleational is really good when you dont know what data is there and how it relates to anything else. If you
-            have a defined buisness pratice or access pattern, then NoSQL is a much better fit for your database. One of
-            the most relevant technologies that you can learn right now.
+            Relational is really good when you dont know what data is there and how it relates to anything else. If you
+            have a defined business practice or access pattern, then NoSQL is a much better fit for your database. One
+            of the most relevant technologies that you can learn right now.
           </Notes>
         </Slide>
         <Slide transition={['zoom']} bgColor="tertiary">
@@ -175,7 +175,7 @@ export default class Presentation extends React.Component {
             </Heading>
             <Notes>
               Its not hard to learn NoSQL, but you have to begin thinking about your data differently in order to make
-              use of it. We currently understsand relational really well, but gotta think differently to move onto the
+              use of it. We currently understand relational really well, but gotta think differently to move onto the
               next phase of things.
             </Notes>
           </Slide>
@@ -216,8 +216,8 @@ export default class Presentation extends React.Component {
             </Heading>
             <Image src={table5} />
             <Notes>
-              Wide column DBs adds in the sort key concept. Uniqueliy identified the item inside the collection/grouping
-              of that partition key. Doesnt have to be homogoneous collections of items. Can be collections of many
+              Wide column DBs adds in the sort key concept. Uniquely identified the item inside the collection/grouping
+              of that partition key. Doesnt have to be homogeneous collections of items. Can be collections of many
               different types of items. Will talk more about this later.
             </Notes>
           </Slide>
@@ -234,12 +234,12 @@ export default class Presentation extends React.Component {
             </Heading>
             <Image src={table7} />
             <Notes>
-              Add indexes on other attributes to allow for new access patterns for the buisness. Its not that we cant
+              Add indexes on other attributes to allow for new access patterns for the business. Its not that we cant
               join objects, the are modeled differently.
             </Notes>
           </Slide>
         </SlideSet>
-        <Slide transition={['zoom']}bgColor="tertiary">
+        <Slide transition={['zoom']} bgColor="tertiary">
           <Heading size={3} textColor="primary">
             Partition Overloading
           </Heading>
@@ -308,8 +308,8 @@ export default class Presentation extends React.Component {
           <List>
             <ListItem>Support secondary access patterns</ListItem>
             <ListItem>💯% SLA guarantee on index replication</ListItem>
-            <ListItem>Eventually consistant (p99 latency = 10 ms)</ListItem>
-            <ListItem>Read/write capacity provisioned seperately</ListItem>
+            <ListItem>Eventually consistent (p99 latency = 10 ms)</ListItem>
+            <ListItem>Read/write capacity provisioned separately</ListItem>
           </List>
           <Notes>
             Table that is replicated and changed as you update data on the parent table. Projections: some (vales needed
@@ -349,7 +349,7 @@ export default class Presentation extends React.Component {
           <Image margin="20px auto 0" fill src={indexOverload2} />
           <List>
             <ListItem>
-              <code>SELECT * WHERE PK=AISN_NUMBER AND SK=PROCESSING</code>
+              <code>SELECT * WHERE PK=AISN AND SK=PROCESSING</code>
             </ListItem>
           </List>
         </Slide>
@@ -408,7 +408,7 @@ export default class Presentation extends React.Component {
             </ListItem>
             <ListItem>
               <Link href={'https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/best-practices.html'}>
-                📃 Amazon DynamoDB Best Pratices
+                📃 Amazon DynamoDB Best Practices
               </Link>
             </ListItem>
             <ListItem>
