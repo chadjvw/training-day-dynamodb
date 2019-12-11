@@ -1,23 +1,27 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 /* eslint-disable */
+
 var path = require('path')
-var webpack = require('webpack')
 
 module.exports = {
-  mode: 'development',
-  devtool: 'cheap-module-source-map',
-  entry: ['webpack-hot-middleware/client', 'react-hot-loader/patch', './index'],
+  entry: ['./index'],
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: '/dist'
+    filename: '[name].[hash].js'
+  },
+  devServer: {
+    port: 3000
   },
   plugins: [
-    new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       title: 'Training Day - Amazon DynamoDB',
       template: 'index.html'
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].[hash].css',
+      chunkFilename: '[id].[hash].css',
+      ignoreOrder: false
     })
   ],
   module: {
@@ -30,7 +34,6 @@ module.exports = {
           },
           {
             loader: 'markdown-loader',
-
             options: {
               gfm: false
             }
@@ -44,74 +47,50 @@ module.exports = {
           {
             loader: 'babel-loader'
           }
-        ],
-        include: __dirname
+        ]
       },
       {
         test: /\.css$/,
         use: [
           {
-            loader: 'style-loader'
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: process.env.NODE_ENV === 'development'
+            }
           },
           {
-            loader: 'raw-loader'
+            loader: 'css-loader'
           }
-        ],
-        include: __dirname
+        ]
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192
+            }
+          }
+        ]
       },
       {
         test: /\.svg$/,
         use: [
           {
             loader: 'url-loader',
-
             options: {
               limit: 10000,
               mimetype: 'image/svg+xml'
             }
           }
-        ],
-        include: path.join(__dirname, 'assets')
-      },
-      {
-        test: /\.png$/,
-        use: [
-          {
-            loader: 'url-loader',
-
-            options: {
-              mimetype: 'image/png'
-            }
-          }
-        ],
-        include: path.join(__dirname, 'assets')
-      },
-      {
-        test: /\.gif$/,
-        use: [
-          {
-            loader: 'url-loader',
-
-            options: {
-              mimetype: 'image/gif'
-            }
-          }
-        ],
-        include: path.join(__dirname, 'assets')
-      },
-      {
-        test: /\.jpg$/,
-        use: [
-          {
-            loader: 'url-loader',
-
-            options: {
-              mimetype: 'image/jpg'
-            }
-          }
-        ],
-        include: path.join(__dirname, 'assets')
+        ]
       }
     ]
+  },
+  optimization: {
+    runtimeChunk: 'single',
+    moduleIds: 'hashed',
+    chunkIds: 'named'
   }
 }
