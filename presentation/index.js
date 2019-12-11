@@ -33,6 +33,8 @@ import indexOverload from '../assets/index-overloading.png'
 import indexOverload1 from '../assets/index-overload1.png'
 import indexOverload2 from '../assets/index-overload2.png'
 import perf from '../assets/perf-at-scale.png'
+import aggregation from '../assets/aggregation.png'
+import finalModel from '../assets/final-model.png'
 
 // Require CSS
 require('normalize.css')
@@ -40,8 +42,8 @@ require('normalize.css')
 const theme = createTheme(
   {
     primary: 'white',
-    secondary: '#1F2022',
-    tertiary: '#03A9FC',
+    secondary: '#232f3e',
+    tertiary: '#3b48cc',
     quaternary: '#CECECE'
   },
   {
@@ -63,11 +65,11 @@ export default class Presentation extends React.Component {
           <Text margin="10px 0 0" textColor="tertiary" fit bold>
             Designing a distributed database for efficiency and scale
           </Text>
-          <Image margin="10px auto 0" src={ddb} width="30%" className="center" />
+          <Image margin="20px auto 0" src={ddb} width="30%" className="center" />
         </Slide>
         <Slide bgColor="primary">
           <Heading size={1} caps textColor="secondary">
-            Outline
+            Outline 🔍
           </Heading>
           <List>
             <ListItem>NoSQL</ListItem>
@@ -80,10 +82,10 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide transition={['zoom']} bgColor="secondary">
           <Heading size={2} textColor="primary">
-            NoSQL
+            NoSQL 🚫
           </Heading>
           <Appear fid="1">
-            <Text textColor="primary">Simply, its any non-relational database</Text>
+            <Text textColor="primary">Simply, it's any non-relational database</Text>
           </Appear>
           <Appear fid="2">
             <Text textColor="primary">Built for specific data models</Text>
@@ -140,7 +142,7 @@ export default class Presentation extends React.Component {
             of the most relevant technologies that you can learn right now.
           </Notes>
         </Slide>
-        <Slide transition={['zoom']} bgColor="tertiary">
+        <Slide transition={['zoom']} bgColor="tertiary" textColor="primary">
           <Heading size={3} textColor="primary" caps>
             Amazon DynamoDB
           </Heading>
@@ -183,28 +185,28 @@ export default class Presentation extends React.Component {
             <Heading size={5} textColor="primary">
               DynamoDB Table
             </Heading>
-            <Image src={table1} />
+            <Image src={table1} width='100%'/>
             <Notes>A table is an object repository. Its where the items go.</Notes>
           </Slide>
           <Slide bgColor="secondary" transition={[noTransition]}>
             <Heading size={5} textColor="primary">
               DynamoDB Table
             </Heading>
-            <Image src={table2} />
+            <Image src={table2} width='100%'/>
             <Notes>Items</Notes>
           </Slide>
           <Slide bgColor="secondary" transition={[noTransition]}>
             <Heading size={5} textColor="primary">
               DynamoDB Table
             </Heading>
-            <Image src={table3} />
+            <Image src={table3} width='100%'/>
             <Notes>All items must have at least one attribute.</Notes>
           </Slide>
           <Slide bgColor="secondary" transition={[noTransition]}>
             <Heading size={5} textColor="primary">
               DynamoDB Table
             </Heading>
-            <Image src={table4} />
+            <Image src={table4} width='100%'/>
             <Notes>
               Partition Key -- unique. Enables k/v lookups. Give me item x => here it is. This is what MongoDB does with
               the '_id' attribute.
@@ -214,7 +216,7 @@ export default class Presentation extends React.Component {
             <Heading size={5} textColor="primary">
               DynamoDB Table
             </Heading>
-            <Image src={table5} />
+            <Image src={table5} width='100%'/>
             <Notes>
               Wide column DBs adds in the sort key concept. Uniquely identified the item inside the collection/grouping
               of that partition key. Doesnt have to be homogeneous collections of items. Can be collections of many
@@ -225,25 +227,25 @@ export default class Presentation extends React.Component {
             <Heading size={5} textColor="primary">
               DynamoDB Table
             </Heading>
-            <Image src={table6} />
+            <Image src={table6} width='100%'/>
             <Notes>Use range queries to selectively get items out of that partition.</Notes>
           </Slide>
           <Slide bgColor="secondary" transition={[noTransition]}>
             <Heading size={5} textColor="primary">
               DynamoDB Table
             </Heading>
-            <Image src={table7} />
+            <Image src={table7} width='100%'/>
             <Notes>
               Add indexes on other attributes to allow for new access patterns for the business. Its not that we cant
               join objects, the are modeled differently.
             </Notes>
           </Slide>
         </SlideSet>
-        <Slide transition={['zoom']} bgColor="tertiary">
+        <Slide transition={['zoom']} bgColor="tertiary" textColor="primary">
           <Heading size={3} textColor="primary">
             Partition Overloading
           </Heading>
-          <Image margin="20px auto 0" fill src={overload} />
+          <Image margin="20px auto 0" fill src={overload} width='100%' />
           <List>
             <ListItem>Generic names for partition and sort key</ListItem>
             <ListItem>Multiple data types stored in one partition</ListItem>
@@ -259,11 +261,11 @@ export default class Presentation extends React.Component {
             orders table. It all lives in the same place.
           </Notes>
         </Slide>
-        <Slide bgColor="tertiary">
+        <Slide bgColor="tertiary" textColor="primary">
           <Heading size={3} textColor="primary">
             Partition Overloading
           </Heading>
-          <Image margin="20px auto 0" fill src={overload} />
+          <Image margin="20px auto 0" fill src={overload} width='100%' />
           <List>
             <ListItem>SK consist of hierarchies of data</ListItem>
             <ListItem>
@@ -321,7 +323,7 @@ export default class Presentation extends React.Component {
           <Heading size={3} textColor="primary">
             Index Overloading
           </Heading>
-          <Image margin="20px auto 0" fill src={indexOverload} />
+          <Image margin="20px auto 0" fill src={indexOverload} width='100%' />
           <List>
             <ListItem>Generic key names enable multiple access patterns</ListItem>
           </List>
@@ -334,7 +336,7 @@ export default class Presentation extends React.Component {
           <Heading size={3} textColor="primary">
             Index Overloading
           </Heading>
-          <Image margin="20px auto 0" fill src={indexOverload1} />
+          <Image margin="20px auto 0" fill src={indexOverload1} width='100%' />
           <List>
             <ListItem>
               <code>SELECT * WHERE PK=ONLINE AND SK=US</code>
@@ -346,7 +348,7 @@ export default class Presentation extends React.Component {
           <Heading size={3} textColor="primary">
             Index Overloading
           </Heading>
-          <Image margin="20px auto 0" fill src={indexOverload2} />
+          <Image margin="20px auto 0" fill src={indexOverload2} width='100%' />
           <List>
             <ListItem>
               <code>SELECT * WHERE PK=AISN AND SK=PROCESSING</code>
@@ -355,9 +357,19 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide transition={['zoom']} bgColor="secondary" textColor="primary">
           <Heading size={4} textColor="primary">
+            Events and Aggregations
+          </Heading>
+          <Image margin="20px auto auto" src={aggregation} width='100%' />
+          <Notes>
+            Change capture pipeline. Use versioned keys in DDB. At least once processing. Could be processed multiple
+            times. Make sure your function is idempotent (idem-potent).
+          </Notes>
+        </Slide>
+        <Slide transition={['zoom']} bgColor="secondary" textColor="primary">
+          <Heading size={4} textColor="primary">
             Performance at scale
           </Heading>
-          <Image margin="20px auto 0" fill src={perf} />
+          <Image margin="20px auto 0" fill src={perf} width='100%' />
           <List>
             <ListItem>Elastic is the new normal</ListItem>
             <ListItem>Burst bucket capacity for 5 minutes</ListItem>
@@ -367,14 +379,18 @@ export default class Presentation extends React.Component {
             node.
           </Notes>
         </Slide>
-        <Slide bgColor="secondary" textColor="primary">
-          <Heading size={4} textColor="primary">
+        <Slide>
+          <Heading size={4} textColor="tertiary">
             Data Modeling
           </Heading>
-          <Text textColor="primary">Rick can explain this much better than I can.</Text>
+          <Text>
+            The single most important aspect of designing a DynamoDB data model is understanding and enumerating the
+            access patterns of the application that will be interacting with the table — before designing the data
+            model.
+          </Text>
         </Slide>
-        <Slide bgColor="secondary" textColor="primary">
-          <Heading size={4} textColor="primary">
+        <Slide>
+          <Heading size={4} textColor="tertiary">
             Data Modeling
           </Heading>
           <iframe
@@ -390,6 +406,13 @@ export default class Presentation extends React.Component {
             webkitallowfullscreen="webkitallowfullscreen"
           ></iframe>
         </Slide>
+        <Slide bgColor="secondary" textColor="primary">
+          <Heading size={4} textColor="primary">
+            Data Modeling
+          </Heading>
+          <Image margin="20px auto 0" fill src={finalModel} width='70%' />
+          <Notes>23 access patterns, 3 GSIs</Notes>
+        </Slide>
         <Slide transition={['zoom']} bgColor="tertiary" textColor="primary">
           <Heading size={1} caps textColor="primary">
             Questions?
@@ -401,22 +424,27 @@ export default class Presentation extends React.Component {
           </Heading>
           <List>
             <ListItem>
-              <Link href={'https://aws.amazon.com/dynamodb/'}>📃 Amazon DynamoDB</Link>
+              <Link href={'https://aws.amazon.com/dynamodb/'}>🖥️ Amazon DynamoDB</Link>
             </ListItem>
             <ListItem>
               <Link href={'https://www.youtube.com/watch?v=6yqfmXiZTlM'}>📺 Amazon DynamoDB Deep Dive</Link>
             </ListItem>
             <ListItem>
               <Link href={'https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/best-practices.html'}>
-                📃 Amazon DynamoDB Best Practices
+                📄 Amazon DynamoDB Best Practices
               </Link>
             </ListItem>
             <ListItem>
-              <Link href={'https://aws.amazon.com/nosql/'}>📃 NoSQL</Link>
+              <Link href={'https://aws.amazon.com/nosql/'}>🖥️ NoSQL</Link>
             </ListItem>
             <ListItem>
               <Link href={'https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-modeling-nosql-B.html'}>
-                📃 Modeling NoSQL
+                📄 Modeling NoSQL
+              </Link>
+            </ListItem>
+            <ListItem>
+              <Link href={'https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.html'}>
+                🛠️ NoSQL Workbench for Amazon DynamoDB
               </Link>
             </ListItem>
             <ListItem>
