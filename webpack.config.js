@@ -8,7 +8,7 @@ module.exports = {
   entry: ['./index'],
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: '[name].[hash].js'
+    filename: '[name].[chunkhash].js'
   },
   devServer: {
     port: 3000
@@ -19,8 +19,8 @@ module.exports = {
       template: 'index.html'
     }),
     new MiniCssExtractPlugin({
-      filename: '[name].[hash].css',
-      chunkFilename: '[id].[hash].css',
+      filename: '[name].[chunkhash].css',
+      chunkFilename: '[id].[chunkhash].css',
       ignoreOrder: false
     })
   ],
@@ -64,12 +64,13 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.(png|jp?g|gif)$/i,
         use: [
           {
             loader: 'url-loader',
             options: {
-              limit: 8192
+              limit: 8192,
+              name: "[path][name].[hash:8].[ext]",
             }
           }
         ]

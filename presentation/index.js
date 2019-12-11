@@ -20,23 +20,21 @@ import {
 } from 'spectacle'
 import createTheme from 'spectacle/lib/themes/default'
 import preloader from 'spectacle/lib/utils/preloader'
+import ddb from '../assets/Amazon-DynamoDB.svg'
+import table1 from '../assets/table-breakdown1.png'
+import table2 from '../assets/table-breakdown2.png'
+import table3 from '../assets/table-breakdown3.png'
+import table4 from '../assets/table-breakdown4.png'
+import table5 from '../assets/table-breakdown5.png'
+import table6 from '../assets/table-breakdown6.png'
+import table7 from '../assets/table-breakdown7.png'
+import overload from '../assets/partition-overloading.png'
+import indexes from '../assets/indexes.png'
+import indexOverload from '../assets/index-overloading.png'
+import indexOverload1 from '../assets/index-overload1.png'
+import indexOverload2 from '../assets/index-overload2.png'
+import perf from '../assets/perf-at-scale.png'
 
-const images = {
-  ddb: '../assets/Amazon-DynamoDB.svg',
-  table1: '../assets/table-breakdown1.png',
-  table2: '../assets/table-breakdown2.png',
-  table3: '../assets/table-breakdown3.png',
-  table4: '../assets/table-breakdown4.png',
-  table5: '../assets/table-breakdown5.png',
-  table6: '../assets/table-breakdown6.png',
-  table7: '../assets/table-breakdown7.png',
-  overload: '../assets/partition-overloading.png',
-  indexes: '../assets/indexes.png',
-  indexOverload: '../assets/index-overloading.png',
-  indexOverload1: '../assets/index-overload1.png',
-  indexOverload2: '../assets/index-overload2.png',
-  perf: '../assets/perf-at-scale.png'
-}
 
 preloader(images)
 
@@ -69,7 +67,7 @@ export default class Presentation extends React.Component {
           <Text margin="10px 0 0" textColor="tertiary" fit bold>
             Desining a distributed database for efficency and scale
           </Text>
-          <Image margin="10px auto 0" src={images.ddb} width="30%" className="center" />
+          <Image margin="10px auto 0" src={ddb} width="30%" className="center" />
         </Slide>
         <Slide bgColor="primary">
           <Heading size={1} caps textColor="secondary">
@@ -189,28 +187,28 @@ export default class Presentation extends React.Component {
             <Heading size={5} textColor="primary">
               DynamoDB Table
             </Heading>
-            <Image src={images.table1} />
+            <Image src={table1} />
             <Notes>A table is an object repository. Its where the items go.</Notes>
           </Slide>
           <Slide bgColor="secondary" transition={[noTransition]}>
             <Heading size={5} textColor="primary">
               DynamoDB Table
             </Heading>
-            <Image src={images.table2} />
+            <Image src={table2} />
             <Notes>Items</Notes>
           </Slide>
           <Slide bgColor="secondary" transition={[noTransition]}>
             <Heading size={5} textColor="primary">
               DynamoDB Table
             </Heading>
-            <Image src={images.table3} />
+            <Image src={table3} />
             <Notes>All items must have at least one attribute.</Notes>
           </Slide>
           <Slide bgColor="secondary" transition={[noTransition]}>
             <Heading size={5} textColor="primary">
               DynamoDB Table
             </Heading>
-            <Image src={images.table4} />
+            <Image src={table4} />
             <Notes>
               Partition Key -- unique. Enables k/v lookups. Give me item x => here it is. This is what MongoDB does with
               the '_id' attribute.
@@ -220,7 +218,7 @@ export default class Presentation extends React.Component {
             <Heading size={5} textColor="primary">
               DynamoDB Table
             </Heading>
-            <Image src={images.table5} />
+            <Image src={table5} />
             <Notes>
               Wide column DBs adds in the sort key concept. Uniqueliy identified the item inside the collection/grouping
               of that partition key. Doesnt have to be homogoneous collections of items. Can be collections of many
@@ -231,14 +229,14 @@ export default class Presentation extends React.Component {
             <Heading size={5} textColor="primary">
               DynamoDB Table
             </Heading>
-            <Image src={images.table6} />
+            <Image src={table6} />
             <Notes>Use range queries to selectively get items out of that partition.</Notes>
           </Slide>
           <Slide bgColor="secondary" transition={[noTransition]}>
             <Heading size={5} textColor="primary">
               DynamoDB Table
             </Heading>
-            <Image src={images.table7} />
+            <Image src={table7} />
             <Notes>
               Add indexes on other attributes to allow for new access patterns for the buisness. Its not that we cant
               join objects, the are modeled differently.
@@ -249,7 +247,7 @@ export default class Presentation extends React.Component {
           <Heading size={3} textColor="primary">
             Partition Overloading
           </Heading>
-          <Image margin="20px auto 0" fill src={images.overload} />
+          <Image margin="20px auto 0" fill src={overload} />
           <List>
             <ListItem>Generic names for partition and sort key</ListItem>
             <ListItem>Multiple data types stored in one partition</ListItem>
@@ -269,7 +267,7 @@ export default class Presentation extends React.Component {
           <Heading size={3} textColor="primary">
             Partition Overloading
           </Heading>
-          <Image margin="20px auto 0" fill src={images.overload} />
+          <Image margin="20px auto 0" fill src={overload} />
           <List>
             <ListItem>SK consist of hierarchies of data</ListItem>
             <ListItem>
@@ -310,7 +308,7 @@ export default class Presentation extends React.Component {
           <Heading size={3} textColor="primary">
             Indexes
           </Heading>
-          <Image margin="20px auto 0" fill src={images.indexes} />
+          <Image margin="20px auto 0" fill src={indexes} />
           <List>
             <ListItem>Support secondary access patterns</ListItem>
             <ListItem>💯% SLA guarantee on index replication</ListItem>
@@ -327,7 +325,7 @@ export default class Presentation extends React.Component {
           <Heading size={3} textColor="primary">
             Index Overloading
           </Heading>
-          <Image margin="20px auto 0" fill src={images.indexOverload2} />
+          <Image margin="20px auto 0" fill src={indexOverload2} />
           <List>
             <ListItem>Generic key names enable multiple access patterns</ListItem>
           </List>
@@ -340,7 +338,7 @@ export default class Presentation extends React.Component {
           <Heading size={3} textColor="primary">
             Index Overloading
           </Heading>
-          <Image margin="20px auto 0" fill src={images.indexOverload1} />
+          <Image margin="20px auto 0" fill src={indexOverload1} />
           <List>
             <ListItem>
               <code>SELECT * WHERE PK=ONLINE AND SK=US</code>
@@ -352,7 +350,7 @@ export default class Presentation extends React.Component {
           <Heading size={3} textColor="primary">
             Index Overloading
           </Heading>
-          <Image margin="20px auto 0" fill src={images.indexOverload2} />
+          <Image margin="20px auto 0" fill src={indexOverload2} />
           <List>
             <ListItem>
               <code>SELECT * WHERE PK=AISN_NUMBER AND SK=PROCESSING</code>
@@ -363,7 +361,7 @@ export default class Presentation extends React.Component {
           <Heading size={4} textColor="primary">
             Performance at scale
           </Heading>
-          <Image margin="20px auto 0" fill src={images.perf} />
+          <Image margin="20px auto 0" fill src={perf} />
           <List>
             <ListItem>Elastic is the new normal</ListItem>
             <ListItem>Burst bucket capacity for 5 minutes</ListItem>
